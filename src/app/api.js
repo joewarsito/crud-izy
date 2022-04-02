@@ -2,14 +2,14 @@ import axios from "axios";
 
 const apiURL = process.env.MOCKAPI;
 
-function getUsers() {
+function getFoods() {
   const response = axios.get(`${apiURL}/v1/Menu`);
 
   return response;
 }
 
-function getCreatedUser({ first_name, last_name, email }) {
-  const response = axios.post(`${apiURL}/users`, {
+function getCreatedFood({ first_name, last_name, email }) {
+  const response = axios.post(`${apiURL}/v1/Menu`, {
     email,
     first_name,
     last_name
@@ -18,22 +18,22 @@ function getCreatedUser({ first_name, last_name, email }) {
   return response;
 }
 
-function getUpdatedUser(id, user) {
-  const response = axios.put(`${apiURL}/users/${id}`, {
-    avatar: user.avatar,
+function getUpdatedFood(id, food) {
+  const response = axios.put(`${apiURL}/v1/Menu/${id}`, {
+    avatar: food.avatar,
     id: id,
-    email: user.email,
-    first_name: user.first_name,
-    last_name: user.last_name
+    email: food.email,
+    first_name: food.first_name,
+    last_name: food.last_name
   });
 
   return response;
 }
 
-function getDeletedUser(id) {
-  const response = axios.delete(`${apiURL}/users/${id}`);
+function getDeletedFood(id) {
+  const response = axios.delete(`${apiURL}/v1/Menu/${id}`);
 
   return response;
 }
 
-export { getUsers, getCreatedUser, getUpdatedUser, getDeletedUser };
+export { getFoods, getCreatedFood, getUpdatedFood, getDeletedFood };

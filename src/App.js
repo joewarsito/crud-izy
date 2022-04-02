@@ -1,18 +1,29 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getFoods,
+  getCreatedFood,
+  getUpdatedFood,
+  getDeletedFood
+} from "./app/api";
 
-//Components
+// Styles
+import "./app.scss";
+
+// Components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import DataTable from "./components/DataTable";
 import Modal from "./components/Modal";
+import Loader from "./components/Loader";
 
 function App() {
   const dispatch = useDispatch();
-  const users = useSelector(state => state.users);
+  const foods = useSelector(state => state.foods);
 
   const [loading, setLoading] = useState(false);
 
-  const [currentUser, setCurrentUser] = useState({
+  const [currentFood, setCurrentFood] = useState({
     id: null,
     avatar: null,
     first_name: "",
@@ -35,12 +46,12 @@ function App() {
       try {
         await getFoods().then(({ data }) => {
           setSavedFoods(data.data);
-          dispatch({ type: "SET_USERS", data: data.data });
+          dispatch({ type: "SET_FOODS", data: data.data });
         });
       } catch (err) {
         MySwal.fire({
           icon: "error",
-          title: "Failed to fetch users."
+          title: "Failed to fetch foods."
         });
       } finally {
         setTimeout(() => {

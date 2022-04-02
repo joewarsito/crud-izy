@@ -48,30 +48,30 @@ const DataTable = props => {
           </tr>
         </thead>
         <tbody>
-          {props.users.length ? (
-            props.users.map(user => (
-              <tr key={user.id}>
+          {props.foods.length ? (
+            props.foods.map(food => (
+              <tr key={food.id}>
                 <td className="field-avatar">
                   <img
-                    src={user.avatar ? user.avatar : PlaceholderImg}
-                    alt={user.first_name}
+                    src={food.avatar ? food.avatar : PlaceholderImg}
+                    alt={food.first_name}
                   />
                 </td>
-                <td>{user.first_name}</td>
-                <td>{user.last_name}</td>
-                <td>{user.email}</td>
+                <td>{food.first_name}</td>
+                <td>{food.last_name}</td>
+                <td>{food.email}</td>
                 <td className="field-actions">
                   <button
                     className="primary-btn"
                     onClick={() => {
-                      props.updateRow(user);
+                      props.updateRow(food);
                     }}
                   >
                     Update
                   </button>
                   <button
                     className="field-actions__delete"
-                    onClick={() => props.deleteRow(user)}
+                    onClick={() => props.deleteRow(food)}
                   >
                     Delete
                   </button>
