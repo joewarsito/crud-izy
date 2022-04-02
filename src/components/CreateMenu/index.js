@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-const CreateUser = props => {
-  const initialData = { id: null, first_name: "", last_name: "", email: "" };
-  const [user, setUser] = useState(initialData);
+const CreateMenu = props => {
+  const initialData = { id: null, name: "", description: "", price: "" };
+  const [menu, setMenu] = useState(initialData);
 
   const onInputChange = event => {
     const { name, value } = event.target;
 
-    setUser({ ...user, [name]: value });
+    setMenu({ ...menu, [name]: value });
   };
 
   const cancel = event => {
@@ -19,34 +19,43 @@ const CreateUser = props => {
     <form
       onSubmit={event => {
         event.preventDefault();
-        if (!user.first_name || !user.last_name) return;
-        props.createUser(user);
+        // if (!menu.first_name || !menu.last_name) return;
+        // props.createMenu(menu);
       }}
     >
       <div className="form-group">
-        <label>First Name</label>
+        <label>Name</label>
         <input
           type="text"
-          name="first_name"
-          value={user.first_name}
+          name="name"
+          value={menu.name}
           onChange={onInputChange}
         />
       </div>
       <div className="form-group">
-        <label>Last Name</label>
+        <label>Description</label>
         <input
           type="text"
-          name="last_name"
-          value={user.last_name}
+          name="description"
+          value={menu.description}
           onChange={onInputChange}
         />
       </div>
       <div className="form-group">
-        <label>E-Mail</label>
+        <label>Price</label>
         <input
-          type="email"
-          name="email"
-          value={user.email}
+          type="text"
+          name="price"
+          value={menu.price}
+          onChange={onInputChange}
+        />
+      </div>
+      <div className="form-group">
+        <label>Hotel</label>
+        <input
+          type="text"
+          name="hotel"
+          value={menu.hotel}
           onChange={onInputChange}
         />
       </div>
@@ -60,4 +69,4 @@ const CreateUser = props => {
   );
 };
 
-export default CreateUser;
+export default CreateMenu;

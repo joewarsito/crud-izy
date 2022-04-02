@@ -20,58 +20,69 @@ const DataTable = props => {
               }}
             >
               <span className="column-sort">
-                First Name
-                <img src={SortIcon} alt="First Name" />
+                Name
+                <img src={SortIcon} alt="Name" />
               </span>
             </th>
             <th
               onClick={() => {
-                props.onSortChange("surname");
+                props.onSortChange("description");
               }}
             >
               <span className="column-sort">
-                Last Name
-                <img src={SortIcon} alt="Last Name" />
+                Description
+                <img src={SortIcon} alt="Description" />
               </span>
             </th>
             <th
               onClick={() => {
-                props.onSortChange("email");
+                props.onSortChange("price");
               }}
             >
               <span className="column-sort">
-                E-Mail
-                <img src={SortIcon} alt="E-Mail" />
+                Price
+                <img src={SortIcon} alt="Price" />
+              </span>
+            </th>
+            <th
+              onClick={() => {
+                props.onSortChange("hotel");
+              }}
+            >
+              <span className="column-sort">
+                Hotel
+                <img src={SortIcon} alt="Hotel" />
               </span>
             </th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {props.foods.length ? (
-            props.foods.map(food => (
-              <tr key={food.id}>
+          {props.menus.length ? (
+            props.menus.map(menu => (
+              <tr key={menu.id}>
                 <td className="field-avatar">
                   <img
-                    src={food.avatar ? food.avatar : PlaceholderImg}
-                    alt={food.first_name}
+                    src={menu.imageUrl ? menu.imageUrl : PlaceholderImg}
+                    alt={menu.name}
                   />
                 </td>
-                <td>{food.first_name}</td>
-                <td>{food.last_name}</td>
-                <td>{food.email}</td>
+                <td>{menu.name}</td>
+                <td>{menu.description}</td>
+                <td>{menu.price}</td>
+                <td>{menu.hotel}</td>
                 <td className="field-actions">
                   <button
                     className="primary-btn"
                     onClick={() => {
-                      props.updateRow(food);
+                      props.updateRow(menu);
                     }}
                   >
                     Update
                   </button>
                   <button
                     className="field-actions__delete"
-                    onClick={() => props.deleteRow(food)}
+                    onClick={() => props.deleteRow(menu)}
                   >
                     Delete
                   </button>

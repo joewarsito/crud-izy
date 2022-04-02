@@ -1,39 +1,38 @@
 import axios from "axios";
 
-const apiURL = process.env.MOCKAPI;
+const apiURL = process.env.MENUAPI;
 
-function getFoods() {
-  const response = axios.get(`${apiURL}/v1/Menu`);
+function getMenus() {
+  const response = axios.get(`${apiURL}/Menu`);
 
   return response;
 }
 
-function getCreatedFood({ first_name, last_name, email }) {
-  const response = axios.post(`${apiURL}/v1/Menu`, {
-    email,
-    first_name,
-    last_name
+function getCreatedMenu() {
+  const response = axios.post(`${apiURL}/Menu`, {
+    
   });
 
   return response;
 }
 
-function getUpdatedFood(id, food) {
-  const response = axios.put(`${apiURL}/v1/Menu/${id}`, {
-    avatar: food.avatar,
+function getUpdatedMenu(id, menu) {
+  const response = axios.put(`${apiURL}/Menu/${id}`, {
+    avatar: menu.avatar,
     id: id,
-    email: food.email,
-    first_name: food.first_name,
-    last_name: food.last_name
+    name: menu.name,
+    description: menu.description,
+    price: menu.price,
+    hotel: menu.hotel
   });
 
   return response;
 }
 
-function getDeletedFood(id) {
-  const response = axios.delete(`${apiURL}/v1/Menu/${id}`);
+function getDeletedMenu(id) {
+  const response = axios.delete(`${apiURL}/Menu/${id}`);
 
   return response;
 }
 
-export { getFoods, getCreatedFood, getUpdatedFood, getDeletedFood };
+export { getMenus, getCreatedMenu, getUpdatedMenu, getDeletedMenu };

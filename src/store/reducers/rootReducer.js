@@ -1,13 +1,13 @@
 const initialState = {
-    foods: []
+    menus: []
   };
   
   const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-      case "SET_FOODS":
-        return { ...state, foods: action.data };
-      case "CREATE_FOOD":
-        return { ...state, foods: [...state.foods, action.data] };
+      case "SET_MENUS":
+        return { ...state, menus: action.data };
+      case "CREATE_MENU":
+        return { ...state, menus: [...state.menus, action.data] };
       default:
         return state;
     }

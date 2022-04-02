@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-const DeleteUser = props => {
-  const [user, setUser] = useState(props.currentUser);
+const DeleteMenu = props => {
+  const [menu, setMenu] = useState(props.currentMenu);
 
   const cancel = event => {
     event.preventDefault();
@@ -9,18 +9,18 @@ const DeleteUser = props => {
   };
 
   useEffect(() => {
-    setUser(props.currentUser);
+    setMenu(props.currentMenu);
   }, [props]);
 
   return (
     <form
       onSubmit={event => {
         event.preventDefault();
-        props.deleteUser(user.id);
+        props.deleteMenu(menu.id);
       }}
     >
       <div className="form-group">
-        Are you sure you want to delete {user.first_name} {user.last_name}?
+        Are you sure you want to delete {menu.name}?
       </div>
       <div className="form-group form-group--actions">
         <button className="primary-btn">Delete</button>
@@ -32,4 +32,4 @@ const DeleteUser = props => {
   );
 };
 
-export default DeleteUser;
+export default DeleteMenu;

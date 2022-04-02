@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-const UpdateUser = props => {
-  const [user, setUser] = useState(props.currentUser);
+const UpdateMenu = props => {
+  const [menu, setMenu] = useState(props.currentMenu);
 
   const onInputChange = event => {
     const { name, value } = event.target;
 
-    setUser({ ...user, [name]: value });
+    setMenu({ ...menu, [name]: value });
   };
 
   const cancel = event => {
@@ -15,40 +15,49 @@ const UpdateUser = props => {
   };
 
   useEffect(() => {
-    setUser(props.currentUser);
+    setMenu(props.currentMenu);
   }, [props]);
 
   return (
     <form
       onSubmit={event => {
         event.preventDefault();
-        props.updateUser(user.id, user);
+        props.updateMenu(menu.id, menu);
       }}
     >
       <div className="form-group">
-        <label>First Name</label>
+        <label>Name</label>
         <input
           type="text"
-          name="first_name"
-          value={user.first_name}
+          name="name"
+          value={menu.name}
           onChange={onInputChange}
         />
       </div>
       <div className="form-group">
-        <label>Last Name</label>
+        <label>Description</label>
         <input
           type="text"
-          name="last_name"
-          value={user.last_name}
+          name="Description"
+          value={menu.description}
           onChange={onInputChange}
         />
       </div>
       <div className="form-group">
-        <label>E-Mail</label>
+        <label>Price</label>
         <input
-          type="email"
-          name="email"
-          value={user.email}
+          type="text"
+          name="price"
+          value={menu.price}
+          onChange={onInputChange}
+        />
+      </div>
+      <div className="form-group">
+        <label>Hotel</label>
+        <input
+          type="text"
+          name="hotel"
+          value={menu.hotel}
           onChange={onInputChange}
         />
       </div>
@@ -62,4 +71,4 @@ const UpdateUser = props => {
   );
 };
 
-export default UpdateUser;
+export default UpdateMenu;
