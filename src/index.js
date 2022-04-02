@@ -15,6 +15,7 @@ const MySwal = withReactContent(Swal);
 export default MySwal;
 
 const store = createStore(rootReducer, composeWithDevTools());
+// console.log(store, 'store')
 
 ReactDOM.render(
   <Provider store={store}>

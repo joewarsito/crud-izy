@@ -38,7 +38,7 @@ const UpdateMenu = props => {
         <label>Description</label>
         <input
           type="text"
-          name="Description"
+          name="description"
           value={menu.description}
           onChange={onInputChange}
         />

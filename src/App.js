@@ -26,6 +26,7 @@ import MySwal from "./index";
 function App() {
   const dispatch = useDispatch();
   const menus = useSelector(state => state.menus);
+  // console.log(menus, 'iajsojdosa')
 
   const [loading, setLoading] = useState(false);
 
@@ -46,6 +47,7 @@ function App() {
   const menusLastIndex = currentPage * pageSize;
   const menusFirstIndex = menusLastIndex - pageSize;
   const currentMenus = menus.slice(menusFirstIndex, menusLastIndex);
+  console.log(currentMenus, 'jdjsdjjdshjk')
 
   // Setting up Modal
   const setModal = modal => {
@@ -53,6 +55,7 @@ function App() {
     setActiveModal({ name: modal, active: true });
   };
 
+  console.log(activeModal, 'modal')
   // Pagination
   const paginate = page => {
     setCurrentPage(page);
@@ -123,7 +126,7 @@ function App() {
   const createMenu = async menu => {
     setActiveModal(false);
     setLoading(true);
-
+    // console.log('create menu')
     try {
       await getCreatedMenu(menu).then(res => {
         const result = res.data;
@@ -151,7 +154,7 @@ function App() {
 
     setCurrentMenu({
       id: menu.id,
-      avatar: menu.avatar,
+      name: menu.name,
       description: menu.description,
       price: menu.price,
       hotel: menu.hotel
@@ -231,12 +234,14 @@ function App() {
   // Fetch Menu
   const fetchMenus = async () => {
     setLoading(true);
-
+    // console.log("adafa")
     try {
       await getMenus().then(({ data }) => {
-        setSavedMenus(data.data);
-        console.log(data);
-        dispatch({ type: "SET_MENUS", data: data.data });
+        setSavedMenus(data);
+        console.log(data, 'data')
+        // console.log(data);
+        dispatch({ type: "SET_MENUS", data: data });
+        // console.log("string")
       });
     } catch (err) {
       MySwal.fire({
@@ -269,6 +274,7 @@ function App() {
                 <button
                   className="primary-btn"
                   onClick={() => setModal("Create Menu")}
+                  // onClick={() => alert('tess')}
                 >
                   Create New Menu
                 </button>

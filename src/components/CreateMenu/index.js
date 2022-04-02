@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 const CreateMenu = props => {
-  const initialData = { id: null, name: "", description: "", price: "" };
+  console.log(props, 'props')
+  const initialData = { id: null, name: "", description: "", price: "", hotel: "" };
   const [menu, setMenu] = useState(initialData);
 
   const onInputChange = event => {
@@ -19,8 +20,8 @@ const CreateMenu = props => {
     <form
       onSubmit={event => {
         event.preventDefault();
-        // if (!menu.first_name || !menu.last_name) return;
-        // props.createMenu(menu);
+        if (!menu.hotel || !menu.name || !menu.price || !menu.description ) return;
+        props.createMenu(menu);
       }}
     >
       <div className="form-group">

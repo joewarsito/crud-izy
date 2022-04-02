@@ -1,16 +1,19 @@
 import axios from "axios";
 
-const apiURL = process.env.MENUAPI;
-
+const apiURL = "https://624589316b7ecf057c1f9fa6.mockapi.io/api/v1";
+// console.log(apiURL)
 function getMenus() {
   const response = axios.get(`${apiURL}/Menu`);
 
   return response;
 }
 
-function getCreatedMenu() {
+function getCreatedMenu({ name, description, price, hotel }) {
   const response = axios.post(`${apiURL}/Menu`, {
-    
+    name,
+    description,
+    price,
+    hotel
   });
 
   return response;
